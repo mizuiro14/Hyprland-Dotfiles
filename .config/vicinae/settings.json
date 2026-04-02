@@ -1,0 +1,213 @@
+// This configuration is merged with the default vicinae configuration file, which you can obtain by running the `vicinae config default` command.
+// Every item defined in this file takes precedence over the values defined in the default config or any other imported file.
+//
+// You can make manual edits to this file, however you should keep in mind that this file may be written to by vicinae when a configuration change is made through the GUI.
+// When that happens, any custom comments or formatting will be lost.
+//
+// If you want to maintain a configuration file with your own comments and formatting, you should create a separate file and add it to the 'imports' array.
+//
+// Learn more about configuration at https://docs.vicinae.com/config
+
+{
+   "$schema": "https://vicinae.com/schemas/config.json",
+   "close_on_focus_loss": false,
+   "pop_to_root_on_close": true,
+   "font": {
+      "normal": {
+         "family": "JetBrainsMono Nerd Font Mono"
+      }
+   },
+   "theme": {
+      "dark": {
+         "name": "nord"
+      }
+   },
+   "favorites": [],
+   "providers": {
+      "@fredrikmwold/store.vicinae.hyprland-monitors": {
+         "preferences": {
+            "hyprland-config-path": "~/.config/hypr/hyprland.conf",
+            "persist-changes": false,
+            "vicinae-monitors-config-path": "~/.config/hypr/configs/"
+         }
+      },
+      "@mattisssa/store.raycast.spotify-player": {
+         "entrypoints": {
+            "generatePlaylist": {
+               "enabled": false
+            },
+            "yourLibrary": {
+               "preferences": {
+                  "Default-View": "playlists"
+               }
+            }
+         }
+      },
+      "@sovereign/store.vicinae.awww-switcher": {
+         "preferences": {
+            "wallpaperPath": "~/.config/hypr/wallpapers",
+            "colorGenTool": "none",
+            "gridRows": "4",
+            "postProduction": "no",
+            "showImageDetails": false,
+            "toggleVicinaeSetting": true,
+            "transitionDuration": "2",
+            "transitionFPS": "60",
+            "transitionStep": "90",
+            "transitionType": "any"
+         }
+      },
+      "applications": {
+         "entrypoints": {
+            "arch-update-tray": {
+               "enabled": false
+            },
+            "assistant": {
+               "enabled": false
+            },
+            "avahi-discover": {
+               "enabled": false
+            },
+            "bssh": {
+               "enabled": false
+            },
+            "bvnc": {
+               "enabled": false
+            },
+            "byobu": {
+               "enabled": false
+            },
+            "byobu_old": {
+               "enabled": false
+            },
+            "cmake-gui": {
+               "enabled": false
+            },
+            "ddcui": {
+               "enabled": false
+            },
+            "designer": {
+               "enabled": false
+            },
+            "electron34": {
+               "enabled": false
+            },
+            "electron36": {
+               "enabled": false
+            },
+            "hp-uiscan": {
+               "enabled": false
+            },
+            "hplip": {
+               "enabled": false
+            },
+            "jconsole-java-openjdk": {
+               "enabled": false
+            },
+            "jconsole-java21-openjdk": {
+               "enabled": false
+            },
+            "jshell-java-openjdk": {
+               "enabled": false
+            },
+            "jshell-java21-openjdk": {
+               "enabled": false
+            },
+            "linguist": {
+               "enabled": false
+            },
+            "nm-connection-editor": {
+               "enabled": false
+            },
+            "octopi-cachecleaner": {
+               "enabled": false
+            },
+            "octopi-notifier": {
+               "enabled": false
+            },
+            "octopi-repoeditor": {
+               "enabled": false
+            },
+            "org.kde.kdeconnect.nonplasma": {
+               "enabled": false
+            },
+            "org.kde.kdeconnect.sms": {
+               "enabled": false
+            },
+            "qdbusviewer": {
+               "enabled": false
+            },
+            "qv4l2": {
+               "enabled": false
+            },
+            "qvidcap": {
+               "enabled": false
+            },
+            "xgps": {
+               "enabled": false
+            },
+            "xgpsspeed": {
+               "enabled": false
+            }
+         }
+      },
+      "clipboard": {
+         "entrypoints": {
+            "history": {
+               "preferences": {
+                  "defaultAction": "copy"
+               }
+            }
+         }
+      },
+      "core": {
+         "entrypoints": {
+            "about": {
+               "enabled": false
+            },
+            "oauth-token-store": {
+               "enabled": false
+            },
+            "reload-scripts": {
+               "enabled": false
+            },
+            "report-bug": {
+               "enabled": false
+            },
+            "sponsor": {
+               "enabled": false
+            }
+         }
+      },
+      "developer": {
+         "enabled": false
+      },
+      "power": {
+         "entrypoints": {
+            "hibernate": {
+               "enabled": false
+            },
+            "soft-reboot": {
+               "enabled": false
+            },
+            "suspend": {
+               "enabled": false
+            }
+         }
+      },
+      "shortcuts": {
+         "entrypoints": {
+            "ee734130-5ebe-4062-9063-c2f619ebfe8f": {
+               "alias": "!g"
+            }
+         }
+      },
+      "system": {
+         "entrypoints": {
+            "browse-apps": {
+               "enabled": true
+            }
+         }
+      }
+   }
+}

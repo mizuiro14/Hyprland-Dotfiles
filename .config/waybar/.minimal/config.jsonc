@@ -1,0 +1,326 @@
+{
+    "layer": "bottom",
+    "position": "top",
+    "reload_style_on_change": true,
+    "spacing": 10,
+
+    "modules-left": [
+        "group/apps",
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "clock",
+        "custom/notification"
+    ],
+    "modules-right": [
+        "custom/updates",
+        "group/music",
+        "group/audio",
+        "group/connection",
+        "group/power"
+    ],
+
+    "groups/apps": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "transition-left-to-right": true,
+            "children-class": "not-apps"
+        },
+        "modules": [
+            "custom/launcher",
+            "wlr/taskbar"
+        ]
+    },
+    
+    "custom/launcher": {
+        "format": "󰣇",
+        "on-click": "/home/mizuiro/.config/rofi/launchers/type-1/launcher.sh || pkill rofi",
+        "tooltip-format": "Apps"
+    },
+
+    "wlr/taskbar": {
+        "format": "icon",
+        "icon-size": 15,
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "all-outputs": true
+    },
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "10": ""
+        },
+        "persistent-workspaces": {
+            "*": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ]
+        },
+        "on-scroll-up": "hyprctl dispatch workspace e-1",
+        "on-scroll-down": "hyprctl dispatch workspace e+1"
+    },
+
+    "clock": {
+        "tooltip": true,
+        "format": "{:%d %b %y | %I:%M %p}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month", // Default view: month
+            "mode-mon-col": 3, // Column layout when in year mode
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#88c0d0'><b>{}</b></span>", // Light blue for month names
+                "days": "<span color='#d8dee9'>{}</span>", // Default text color
+                "weeks": "<span color='#81a1c1'><b>W{}</b></span>", // Muted blue for week numbers
+                "weekdays": "<span color='#ebcb8b'><b>{}</b></span>", // Warm yellow for weekdays
+                "today": "<span color='#bf616a'><b><u>{}</u></b></span>" // Red underline for today
+            }
+        },
+        "actions": {
+            "on-click-right": "mode", // Switch between month ↔ year
+            "on-scroll-left": "tz_up", // Change timezone
+            "on-scroll-right": "tz_down",
+            "on-scroll-up": "shift_up", // Navigate calendar
+            "on-scroll-down": "shift_down"
+        }
+    },
+
+    "custom/notification": {
+        "tooltip": true,
+        "format": "<span size='14pt'>{icon}</span>",
+        // "format": "{icon}",
+        "format-icons": {
+        "notification": "󱅫",
+        "none": "󰂜",
+        "dnd-notification": "󰂠",
+        "dnd-none": "󰪓",
+        "inhibited-notification": "󰂛",
+        "inhibited-none": "󰪑",
+        "dnd-inhibited-notification": "󰂛",
+        "dnd-inhibited-none": "󰪑"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+
+    "custom/updates": {
+        "format": "{icon} {0}",
+        "return-type": "json",
+        "format-icons": {
+            "has-updates": "󰏔",
+            "updated": ""
+        },
+        "exec-if": "which waybar-module-pacman-updates",
+        "exec": "waybar-module-pacman-updates --no-zero-output",
+        "on-click": "kitty -e arch-update"
+    },
+
+    "group/music": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "transition-left-to-right": true,
+            "children-class": "not-music"
+        },
+        "modules": [
+            "mpris#icon",
+            "mpris"
+        ] 
+    },
+
+    "mpris#icon": {
+        "format": "{player_icon}",
+        "format-paused": "󰏤",
+        "format-stopped": "",
+        "title-len": 15,
+        "tooltip-format": "{title}\n{artist}\n{length}",
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous",
+        "on-click-right": "hyprctl dispatch workspace 4",
+        "player-icons": {
+            "default": "󰝚",
+            "spotify": "󰓇"
+        }
+    },
+
+    "mpris": {
+        "format": "{artist} - {title}",
+        "format-paused": "{artist} - {title}",
+        "title-len": 15,
+        "tooltip-format": "{title}\n{artist}\n{length}",
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous",
+        "on-click-right": "hyprctl dispatch workspace 4",
+        "player-icons": {
+            "default": "󰝚",
+            "spotify": "󰓇"
+        }
+    },
+
+    "group/audio": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "transition-left-to-right": true,
+            "children-class": "not-audio"
+        }
+    },
+
+    "pulseaudio#icon": {
+        "format":"{icon}",
+        "format-muted": "󰝟",
+        "format-off": "󰝟",
+        "format-icons": [
+            "󰕿",
+            "󰖀",
+            "󰕾"
+        ],
+        "on-click": "pamixer -t",
+        "on-click-right": "bash -c 'pkill -x pavucontrol || pavucontrol --tab=3 &'",
+        "scroll-step": 5,
+        "states": {
+            "50": 50,
+            "off": 0
+        }
+    },
+
+        "pulseaudio": {
+        "format": "{volume}%",
+        "format-muted": "{volume}%",
+        "format-off": "{volume}%",
+        "on-click": "pamixer -t",
+        "on-click-right": "bash -c 'pkill -x pavucontrol || pavucontrol --tab=3 &'",
+        "scroll-step": 5,
+        "states": {
+            "50": 50,
+            "off": 0
+        }
+    },
+
+    "group/connection": {
+        "orientation": "inherit",
+        "modules": [
+            "bluetooth",
+            "network"
+        ]
+    },
+
+   "bluetooth": {
+        "format": "",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂱",
+        "tooltip-format": "Bluetooth On",
+        "tooltip-format-connected": "{device_alias} {device_battery_percentage}% | {num_connections}",
+        // "on-click": "bash -c 'if pgrep -x blueberry >/dev/null; then pkill -x blueberry; else blueberry & fi'"
+        "on-click": "bash -c 'pkill -x blueberry || blueberry &'"
+    },
+    "network": {
+        "format": "{ifname}",
+        "format-disconnected": "󰤭",
+        "format-wifi": "󰤨",
+        "format-ethernet": "󰈀",
+        "format-disabled": "󰤭",
+        "tooltip-format": "{ifname} via {gwaddr} 󰈀",
+        "tooltip-format-ethernet": "{ifname} 󰈀",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) 󰤨",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 15,
+        // "on-click": "bash -c 'if pgrep -x nmgui >/dev/null; then pkill -x nmgui; else nmgui & fi'"
+        "on-click": "bash -c 'pkill -x nmgui || nmgui &'"
+    },
+
+   "group/group-power": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "not-power",
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "battery",
+            "power-profiles-daemon",
+            "custom/quit",
+            "custom/lock",
+            "custom/sleep",
+            "custom/reboot",
+            "custom/power"
+        ]
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Profile: {profile}",
+        "format-icons": {
+            "default": "󰂅",
+            "performance": "󰓅",
+            "balanced": "󰔟",
+            "power-saver": "󰌪"
+        }
+    },
+    "custom/quit": {
+        "format": "󰍃",
+        "tooltip-format": "Logout",
+        "on-click": "hyprctl dispatch exit"
+    },
+    "custom/lock": {
+        "format": "󰍁",
+        "tooltip-format": "Lock",
+        "on-click": "hyprlock"
+    },
+    "custom/sleep": {
+        "format": "󰒲",
+        "tooltip-format": "Sleep",
+        "on-click": "systemctl suspend"
+    },
+    "custom/reboot": {
+        "format": "󰜉",
+        "tooltip-format": "Reboot",
+        "on-click": "reboot"
+    },
+    "custom/power": {
+        "format": "󰐥",
+        "tooltip-format": "Shutdown",
+        "on-click": "shutdown now"
+    },
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-plugged": "{icon}",
+        "interval": 5,
+        "format-icons": {
+            "charging": [
+                "󰢜",
+                "󰂆",
+                "󰂇",
+                "󰂈",
+                "󰢝"
+            ],
+            "discharging": [
+                "󰁺",
+                "󰁻",
+                "󰁼",
+                "󰁽",
+                "󰁹"
+            ],
+            "plugged": "",
+            "full": "󰁹"
+        },
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "tooltip-format": "{timeTo}"
+    }
+}
