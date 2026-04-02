@@ -95,7 +95,6 @@ done
 
 # Apps to install via flatpak
 FLATPAK_APPS=(
-    "com.hypixel.HytaleLauncher"
     "dev.bragefuglseth.Keypunch"
     "io.mrarm.mcpelauncher"
     "net.shadps4.shadPS4"
