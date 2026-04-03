@@ -28,39 +28,25 @@ List of programs used
 Install these extensions for vicinae:
 
 - AWWW Switcher
-
 - Bluetooth
-
 - Arch Packages
-
 - Player Pilot
-
 - hypr keybinds
-
 - Power profile
-
 - Hyprland Monitors
-
 - Spotify Player
-
 - Wifi Commander
-
 - PulseAudio
-
 - NerdFonts
 
 ## To-do
 
 - [ ] minimal waybar
-
 - [ ] reworked swaync
-
 - [ ] nautilus setup (currently using dolphin)
-
 - [ ] more color themes (theme switcher)
 
 ## Credits
 
 - **Animations** - from ML4W
-
 - **Powermenu** - type 3 style 3 from adi1090x/rofi
