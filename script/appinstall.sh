@@ -39,6 +39,7 @@ PACMAN_APPS=(
     "discord"
     "github-cli"
     "gvfs"
+    "gwenview"
     "godot"
     "hyprlock"
     "hypridle"
@@ -58,6 +59,13 @@ PACMAN_APPS=(
     "ttyper"
     "vlc"
     "waybar"
+
+    "kvantum"
+    "kvantum-qt5"
+    "qt5ct"
+    "qt6ct"
+    "otf-font-awesome"
+    "archlinux-xdg-menu"
     
 )
 
