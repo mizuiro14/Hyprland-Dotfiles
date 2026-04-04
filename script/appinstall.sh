@@ -71,7 +71,6 @@ done
 YAY_APPS=(
     "azaharplus-appimage"
     "blueberry"
-    "eden-git"
     "epson-inkjet-printer-escpr"
     "github-desktop-bin"
     "nmgui"
@@ -83,6 +82,8 @@ YAY_APPS=(
     "visual-studio-code-bin"
     "waybar-module-pacman-updates-git"
     "zoom"
+    "eden-git"
+
 )
 
 # Install yay apps
