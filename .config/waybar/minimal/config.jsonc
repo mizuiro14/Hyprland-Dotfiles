@@ -1,0 +1,235 @@
+{
+    "layer": "bottom",
+    "position": "top",
+    "margin-left": 10,
+    "margin-right": 10,
+    "margin-top": 10,
+    // "width": 1000,
+    "reload_style_on_change": true,
+    
+    "modules-left": [
+        "group/apps",
+        "clock"
+    ],
+    "modules-center": [
+        "hyprland/workspaces",
+        "custom/notification"
+    ],
+    "modules-right": [
+        "custom/updates",
+        "group/audio",
+        "group/connections",
+        "battery"
+    ],
+
+    "group/apps": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "apps-child",
+            "transition-left-to-right": true
+        },
+        "modules": [
+            "custom/launcher",
+            "wlr/taskbar"
+        ]
+
+    },
+
+    "custom/launcher": {
+        "format": "󰣇",
+        "on-click": "vicinae vicinae://launch/system/browse-apps",
+        "tooltip-format": "Apps"
+    },
+
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 15,
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "all-outputs": true
+    },
+
+    "clock": {
+        "tooltip": true,
+        "format": "{:%B %d | %I:%M %p}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month", // Default view: month
+            "mode-mon-col": 3, // Column layout when in year mode
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#88c0d0'><b>{}</b></span>", // Light blue for month names
+                "days": "<span color='#d8dee9'>{}</span>", // Default text color
+                "weeks": "<span color='#81a1c1'><b>W{}</b></span>", // Muted blue for week numbers
+                "weekdays": "<span color='#ebcb8b'><b>{}</b></span>", // Warm yellow for weekdays
+                "today": "<span color='#bf616a'><b><u>{}</u></b></span>" // Red underline for today
+            }
+        },
+        "actions": {
+            "on-click-right": "mode", // Switch between month ↔ year
+            "on-scroll-left": "tz_up", // Change timezone
+            "on-scroll-right": "tz_down",
+            "on-scroll-up": "shift_up", // Navigate calendar
+            "on-scroll-down": "shift_down"
+        }
+    },
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "10": ""
+        },
+        "persistent-workspaces": {
+            "*": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ]
+        },
+        "on-scroll-up": "hyprctl dispatch workspace e-1",
+        "on-scroll-down": "hyprctl dispatch workspace e+1"
+    },
+
+    "custom/notification": {
+        "tooltip": true,
+        "format": "<span size='14pt'>{icon}</span>",
+        "format-icons": {
+        "notification": "󱅫",
+        "none": "󰂜",
+        "dnd-notification": "󰂠",
+        "dnd-none": "󰪓",
+        "inhibited-notification": "󰂛",
+        "inhibited-none": "󰪑",
+        "dnd-inhibited-notification": "󰂛",
+        "dnd-inhibited-none": "󰪑"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+
+    "custom/updates": {
+        "format": "{icon} {0}",
+        "return-type": "json",
+        "format-icons": {
+            "has-updates": "󰏔",
+            "updated": ""
+        },
+        "exec-if": "which waybar-module-pacman-updates",
+        "exec": "waybar-module-pacman-updates --no-zero-output",
+        "on-click": "kitty -e arch-update"
+    },
+
+    "group/audio": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "audio-child",
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "pulseaudio",
+            "custom/ScrollMPRIS"
+        ]
+    },
+
+    "custom/ScrollMPRIS": {
+        "return-type": "json",
+        "exec": "ScrollMPRIS -s 85 -w 20 --freeze --format '{artist} | {title}'",
+        "escape": true,
+        "on-click": "playerctl play-pause",
+        "on-scroll-down": "playerctl next",
+        "on-scroll-up": "playerctl previous",
+        "on-click-right": "hyprctl dispatch workspace special:extra"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟 {volume}%",
+        "format-off": "󰝟 {volume}%",
+        "format-icons": [
+            "󰕿",
+            "󰖀",
+            "󰕾"
+        ],
+        "on-click": "pamixer -t",
+        "on-click-right": "bash -c 'pkill -x pavucontrol || pavucontrol --tab=3 &'",
+        "scroll-step": 5,
+        "states": {
+            "half": 50,
+            "off": 0
+        }
+    },
+
+    "group/connections": {
+        "orientation": "inherit",
+        "modules": [
+            "bluetooth",
+            "network"
+        ]
+    },
+
+    "bluetooth": {
+        "format": "",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂱",
+        "tooltip-format": "Bluetooth On",
+        "tooltip-format-connected": "Bluetooth Connected",
+        "on-click": "vicinae vicinae://launch/@Gelei/store.vicinae.bluetooth/devices"
+    },
+
+    "network": {
+        "format": "{ifname}",
+        "format-disconnected": "󰤭",
+        "format-wifi": "󰤨",
+        "format-ethernet": "󰈀",
+        "format-disabled": "󰤭",
+        "tooltip-format": "{ifname} via {gwaddr} 󰈀",
+        "tooltip-format-ethernet": "{ifname} 󰈀",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) 󰤨",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 15,
+        "on-click": "vicinae vicinae://launch/@dagimg-dot/store.vicinae.wifi-commander/scan-wifi"
+    },
+
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-plugged": "{icon}",
+        "interval": 5,
+        "format-icons": {
+            "charging": [
+                "󰢜",
+                "󰂆",
+                "󰂇",
+                "󰂈",
+                "󰢝"
+            ],
+            "discharging": [
+                "󰁺",
+                "󰁻",
+                "󰁼",
+                "󰁽",
+                "󰁹"
+            ],
+            "plugged": "",
+            "full": "󰁹"
+        },
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "tooltip-format": "{timeTo}",
+        "on-click": "~/.config/rofi/powermenu/powermenu.sh",
+        "on-click-right": "vicinae vicinae://launch/@botkooper/store.vicinae.power-profile/power-profile"
+    }
+
+}

@@ -1,0 +1,188 @@
+@define-color text-color #d8dee9;
+@define-color background-color #3b4252;
+@define-color accent-color #81a1c1;
+@define-color text-color-dark #2e3440;
+@define-color urgent-color #bf616a;
+@define-color hover-color #5e81ac;
+@define-color hover-text-color #eceff4;
+@define-color warning-color #ebcb8b;
+@define-color success-color #a3be8c;
+@define-color tooltip-background-color #434c5e;
+
+* {
+    font-family: 'JetBrainsMono Nerd Font Propo', 'Font Awesome 6 Free', sans-serif;
+    font-size: 14px;
+    border: none;
+    font-weight: bold;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: @background-color;
+    color: @text-color;
+    padding: 2px 10px;
+    border-radius: 10px;
+    border: 2px solid rgb(129, 161, 193);
+}
+
+#custom-launcher {
+    color: @accent-color;
+    padding-left: 15px;
+    padding-right: 10px;
+    font-size: 18px
+}
+
+#taskbar {
+    padding: 5px 0;
+}
+
+#taskbar button {
+    margin: 0 2px;
+    padding: 0 10px;
+    border-radius: 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+#taskbar button.active {
+    background-color: @accent-color;
+    border-radius: 10px;
+}
+
+#taskbar button:hover {
+    background-color: @hover-color;
+    color: @hover-text-color;
+    transition: all 0.2s ease-in-out;
+}
+
+#clock {
+    padding: 2px 10px;
+    color: @accent-color;
+}
+
+#workspaces {
+    padding: 5px 0;
+}
+
+#workspaces button {
+    background: transparent;
+    color: @accent-color;
+    padding: 5px;
+    margin: 0 2px;
+    transition: all 0.2s ease-in-out;
+    border-radius: 10px;
+}
+
+#workspaces button.active {
+    background-color: @accent-color;
+    color: @text-color-dark;
+    min-width: 20px
+}
+
+#workspaces button.urgent {
+    background-color: @urgent-color;
+    color: @text-color-dark;
+    min-width: 20px
+}
+
+#workspaces button:hover {
+    background: @hover-color;
+    color: @hover-text-color;
+    transition: all 0.2s ease-in-out;
+    border-radius: 5px;
+}
+
+#custom-notification {
+    color: @accent-color;
+    padding: 2px 3px;
+    min-width: 25px;
+}
+
+#custom-updates {
+    color: @background-color
+}
+
+#custom-updates.has-updates {
+    color: @warning-color;
+    padding: 2px 10px
+}
+
+#custom-ScrollMPRIS, .playing {
+    color: @accent-color;
+    padding: 2px 10px;
+}
+
+#custom-ScrollMPRIS.paused {
+    color: @warning-color
+}
+
+#pulseaudio {
+    color: @accent-color;
+    padding: 2px 10px;
+}
+
+#pulseaudio.half {
+    color: @warning-color
+}
+
+#pulseaudio.muted, #pulseaudio.off {
+    color: @urgent-color
+}
+
+#bluetooth {
+    color: @accent-color;
+    padding: 0 10px;
+}
+
+#bluetooth.disabled,
+#bluetooth.off {
+    color: @urgent-color;
+}
+
+#bluetooth.connected {
+    color: @success-color;
+}
+
+#network {
+    color: @accent-color;
+    padding: 0 10px;
+}
+
+#network.disabled,
+#network.disconnected {
+    color: @urgent-color;
+}
+
+#network.connected {
+    color: @success-color;
+}
+
+#battery,
+#battery.full,
+#battery.discharging {
+    color: @accent-color;
+    padding-left: 10px;
+    padding-right: 15px;
+}
+
+#battery.charging {
+    color: @success-color;
+}
+
+#battery.warning {
+    color: @warning-color;
+}
+
+#battery.critical {
+    color: @urgent-color;
+}
+
+tooltip,
+tooltip label {
+    font-family: "JetBrainsMono Nerd Font Propo", "Font Awesome 6 Free", sans-serif;
+    font-size: 13.5px;
+    color: @accent-color;
+    background: @tooltip-background-color;
+    border-radius: 10px;
+    box-shadow: none;
+    padding: 6px 10px;
+}
