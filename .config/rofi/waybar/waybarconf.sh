@@ -2,7 +2,7 @@
 
 # Define paths
 WAYBAR_DIR="$HOME/.config/waybar"
-THEMES=("default" "minimal")
+THEMES=("Default" "Minimal")
 
 # Use Rofi to select theme
 # 'printf' joins the array into a newline-separated string
