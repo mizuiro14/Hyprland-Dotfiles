@@ -29,6 +29,7 @@ echo ""
 
 # Apps to install via pacman
 PACMAN_APPS=(
+    "awww"
     "zen-browser-bin"
     "vesktop"
     "ryujinx"
