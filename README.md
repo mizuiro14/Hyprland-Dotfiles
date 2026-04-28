@@ -50,3 +50,4 @@ Install these extensions for vicinae:
 
 - **Animations** - from ML4W
 - **Powermenu** - type 3 style 3 from adi1090x/rofi
+- **GTK Theme** - eliverlara
